@@ -17,12 +17,24 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+const loadTemperamentsOnBD = require("./src/helpers/loadTemperamentsOnBD.js")
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const portToUse = process.env.PORT || 3001
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  server.listen(portToUse, () => {
+    console.log("¡CONECTADO A LA BASE DE DATOS EXITOSAMENTE!")
+    console.log("# Escuchando en el puerto: ", portToUse); // eslint-disable-line no-console
+
+    try {
+      loadTemperamentsOnBD()
+    } catch (error) {
+      console.log(error)
+    }
+
+
   });
 });
