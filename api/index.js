@@ -24,13 +24,13 @@ const { conn } = require('./src/db.js');
 const portToUse = process.env.PORT || 3001
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(portToUse, () => {
     console.log("¡CONECTADO A LA BASE DE DATOS EXITOSAMENTE!")
     console.log("# Escuchando en el puerto: ", portToUse); // eslint-disable-line no-console
 
     try {
-      loadTemperamentsOnBD()
+      // loadTemperamentsOnBD()
     } catch (error) {
       console.log(error)
     }

@@ -13,12 +13,12 @@ module.exports = (sequelize) => {
       //   return rawValue ? `A${rawValue}` : null
       // }
     },
-    // isFromBD: {
-    //   type: DataTypes.VIRTUAL,
-    //   get() {
-    //     return `A${this.id}`
-    //   }
-    // },
+    isFromBD: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return `A${this.id}`
+      }
+    },
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,

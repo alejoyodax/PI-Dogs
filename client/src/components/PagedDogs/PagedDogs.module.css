@@ -1,0 +1,74 @@
+.cardsContainer{
+    margin: 0px 0px;
+    display: flex;
+    max-width: 1200px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: 0rem;
+
+
+    /* border: 2px solid rgb(75, 75, 223);     */
+    text-decoration: none;
+
+    animation-name: aparicion;
+    animation-duration: 2s;
+
+    z-index: 1;
+}
+
+.paginatedControlsContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.paginatedControlsContainer > button{
+    height: 30px;
+    width: 90px;
+    border: 0;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: var(--color-gray1);
+    color: white;
+}
+
+.paginatedControlsContainer > button:disabled, .paginatedControlsContainer > button:disabled:hover{
+    background-color: var(--color-white2);
+    color: var(--color-gray1);
+}
+
+
+.paginatedControlsContainer > button:hover{
+    cursor: pointer;
+    background-color: var(--color-gray3);
+    
+}
+.paginatedControlsContainer > button:active{
+    cursor: pointer;
+    background-color: rgb(56, 56, 56);
+}
+.paginatedControlsContainer > button:disabled{
+    cursor: default;
+}
+
+.paginatedControlsContainer > h3{
+    margin: 10px 20px;
+    color: var(--gray-text);
+    /* color: red; */
+}
+
+@keyframes aparicion {
+    0% {
+        color: transparent;
+    }
+    100%{
+        
+    }
+    
+}

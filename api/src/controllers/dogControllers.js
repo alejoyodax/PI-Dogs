@@ -15,13 +15,39 @@ function getUtilInfoFromDog(dog) {
    return {
       id: dog.id,
       nombre: dog.name,
-      altura_min: altura[0],
-      altura_max: altura[1],
-      peso_min: peso[0],
-      peso_max: peso[1],
-      años_de_vida: años[2],
+      altura_min: Number.parseInt(altura[0]),
+      altura_max: Number.parseInt(altura[1]),
+      peso_min: Number.parseInt(peso[0]),
+      peso_max: Number.parseInt(peso[1]) || 0,
+      años_de_vida: Number.parseInt(años[2]),
       img_url: dog.image.url,
       temperamentos: dog.temperament && [...dog.temperament.split(", ")]
+   }
+}
+
+function mapInfoDogDB(dog) {
+   const mapTempers = (temperList) => {
+      // console.log(temperList)
+      const mapedTempers = temperList.map(temper => {
+         return temper.nombre
+      })
+
+
+      return [...mapedTempers]
+   }
+
+
+   return {
+      isFromBD: "A" + dog.id,
+      id: "A" + dog.id,
+      nombre: dog.nombre,
+      altura_min: dog.altura_min,
+      altura_max: dog.altura_max,
+      peso_min: dog.peso_min,
+      peso_max: dog.peso_max,
+      años_de_vida: dog.años_de_vida,
+      img_url: dog.img_url,
+      temperamentos: mapTempers(dog.tempers)
    }
 }
 
@@ -54,7 +80,7 @@ async function createDogBreed(dogToCreate) {
          }
       })
    if (dogFound) {
-      console.log("ID PERRO CREADO", dogFound.id)
+      // console.log("ID PERRO CREADO", dogFound.id)
       throw customError(`Ya existe una raza con el nombre \'${dogToCreate.nombre}\' en la base de datos`)
    }
    const newDog = await Dog.create({
@@ -81,12 +107,15 @@ async function getDogsFromApi() {
    const rawDogsFromBD = await Dog.findAll({ // TRAER LOS DOGS DE LA BD
       include: Temper
    });
-   // POR CADA OBJETO TEMPERAMENTO
+   const dogsWithUtilInfoFromDB = []
    for (let i = 0; i < rawDogsFromBD.length; i++) {
-      rawDogsFromBD[i] = rawDogsFromBD[i].nombre   // SOLO QUIERO LOS NOMBRES DE LOS TEMPERAMENTOS
+      dogsWithUtilInfoFromDB.push(mapInfoDogDB(rawDogsFromBD[i]))
    }
 
-   return [...rawDogsFromBD, ...dogsWithUtilInfoFromApi]
+
+
+
+   return [...dogsWithUtilInfoFromDB, ...dogsWithUtilInfoFromApi]
 }
 
 async function searchDogsMatchedByName(stringToSearch) {
@@ -106,8 +135,8 @@ async function searchDogsMatchedByName(stringToSearch) {
       },
       // raw: true
    })
-   console.log("ENCONTRADOS EN BD: ", matchedDogsFromBD.length)
-   console.log("ENCONTRADOS EN BD: ", matchedDogsFromApi.length)
+   // console.log("ENCONTRADOS EN BD: ", matchedDogsFromBD.length)
+   // console.log("ENCONTRADOS EN BD: ", matchedDogsFromApi.length)
 
    // SI NO SE ENCUENTRA NINGUNA COOINCIDENCIA EN LA API Y BD
    if (matchedDogsFromApi.length === 0 && matchedDogsFromBD.length === 0) throw customError("No hay ninguna coincidencia", 404)
@@ -135,7 +164,7 @@ async function getInfoBreedById(idBreed) {
    let dogFound
    // SI EL ID ES DE LA BD
    if (idBreed[0] === "A" || idBreed[0] === "a") {
-      console.log("ID DE BASE DE DATOS")
+      // console.log("ID DE BASE DE DATOS")
       const dogQuery = await Dog.findByPk(idBreed.slice(1))
       if (!dogQuery) throw itIsNotExistError
       dogFound = {
@@ -144,7 +173,7 @@ async function getInfoBreedById(idBreed) {
       }
 
    } else {// SI EL ID ES DE LA API
-      console.log("ID DE API")
+      // console.log("ID DE API")
       const dogsFromApi = (await axios.get("https://api.thedogapi.com/v1/breeds", {
          headers: {
             'x-api-key': process.env.API_KEY_DOGS
@@ -161,7 +190,7 @@ async function getInfoBreedById(idBreed) {
       if (!dogFound) throw itIsNotExistError
    }
 
-   console.log(dogFound)
+   // console.log(dogFound)
    return dogFound
 }
 
