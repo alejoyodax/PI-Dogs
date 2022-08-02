@@ -5,7 +5,7 @@
     height: 320px;
     margin: 10px 10px 10px 10px; 
 
-    border: 1px solid var(--color-white1);
+    border: 1px solid var(--color-gray0);
     /* background-color: white; */
     /* background-color: white; */
     border-radius: 0.7rem;
@@ -16,7 +16,7 @@
     align-items: center;
 
     position: relative;
-    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 5px 12px 1px rgba(0, 0, 0, 0.096);
     
     animation-name: aparicion;
     animation-duration: 300ms;
@@ -103,12 +103,6 @@
     overflow: hidden;
 }
 
-
-
-
-
-
-
 /* ANIMACION CARD AL PONER CURSOR ENCIMA */
 
 .card:hover{
@@ -118,7 +112,7 @@
 
     cursor: pointer;    
     background-color: white;
-    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 12px 1px rgba(0, 0, 0, 0.158);
     
     animation-name: levantar;
     animation-duration: 200ms;

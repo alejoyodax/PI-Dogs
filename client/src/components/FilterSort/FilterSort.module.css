@@ -76,10 +76,20 @@
     /* background-color:var(--gray1-bg); */
 }
 
+
+
+
+
+
+
 @media (max-width: 500px) {
-    .boxControl{
+    /* .boxControl{
         width: 100%;
         justify-content: center;
         align-items: center;
+    } */
+    .filtersSortsContainer{
+    padding: 0;
     }
-  }
+
+}

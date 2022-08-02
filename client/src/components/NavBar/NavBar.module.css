@@ -88,8 +88,22 @@
     transition-timing-function: linear;
 }
 
-.liContainer:hover {
-    padding: auto;   
-    /* border: 1px solid rgb(168, 168, 168); */
+
+.searchInputContainer{
+    /* border: 1px solid red; */
+    position: relative;
 }
 
+.searchInputContainer > input{
+    border: 0px solid blue;
+    height: 30px;
+    width: 170px;
+    border-radius: 90px;
+    padding-left: 35px;
+    font-size: 15px;
+
+}
+.searchInputContainer > img{
+    position: absolute;
+    left: 16px;
+}

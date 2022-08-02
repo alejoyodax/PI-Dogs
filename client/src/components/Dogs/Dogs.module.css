@@ -12,6 +12,7 @@
     /* border: 3px solid rgb(235, 235, 76); */
     animation-duration: 1.5s;
     animation-name: aparicion;
+    background-color: var(--color-white2);
 }
 
 .fondo{

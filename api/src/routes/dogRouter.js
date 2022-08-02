@@ -21,6 +21,18 @@ dogRouter.get("/", async (req, res, next) => {
    }
 })
 
+dogRouter.get("/search", async (req, res, next) => {
+   const { q } = req.query //    STRING A BUSCAR
+   console.log(q)
+   try {
+      const dogsFound = await searchDogsMatchedByName(q)
+      res.status(200).send([...dogsFound])
+
+   } catch (error) {
+      next(error)
+   }
+})
+
 dogRouter.get("/:idRaza", async (req, res, next) => {
    const { idRaza } = req.params //  ID DE INFORMACIÓN DE RAZA SOLICITADA
    console.log("RAZA SOLICITADA", idRaza)
@@ -36,16 +48,7 @@ dogRouter.get("/:idRaza", async (req, res, next) => {
 })
 
 
-dogRouter.get("/search", async (req, res, next) => {
-   const { q } = req.query //    STRING A BUSCAR
-   try {
-      const dogsFound = await searchDogsMatchedByName(q)
-      res.status(200).send([...dogsFound])
 
-   } catch (error) {
-      next(error)
-   }
-})
 
 dogRouter.post("/", async (req, res, next) => {
    const dogToCreate = req.body

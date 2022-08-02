@@ -59,7 +59,8 @@
 
 .paginatedControlsContainer > h3{
     margin: 10px 20px;
-    color: var(--gray-text);
+    color: var(--color-gray2);
+    font-size: 15px;
     /* color: red; */
 }
 

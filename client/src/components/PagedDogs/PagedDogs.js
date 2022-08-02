@@ -10,13 +10,14 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 export default function PagedDogs() {
+    const totalBreeds = useSelector(state => state.dogBreeds.length)
     const dogBreedsToShow = useSelector(state => state.dogBreedsToShow)
     const [state, setState] = useState([...dogBreedsToShow])
     const [currentPage, setCurrentPage] = useState(0)
     const [itemsPerPage, setItemsPerPage] = useState(8)
     const [currentItems, setCurrentItems] = useState([...state.slice(0, itemsPerPage)])
     const [totalPages, setTotalPages] = useState((Math.floor(dogBreedsToShow.length / itemsPerPage)))
-    console.log("TOTAL PAGES:", totalPages)
+    // console.log("TOTAL PAGES:", totalPages)
 
     // CUANDO LOS DOGS A MOSTRAR DEL STORE E itemsPerPage CAMBIEN
     useEffect(() => {
@@ -48,7 +49,7 @@ export default function PagedDogs() {
 
     const setItemsPorPagina = (event) => {
         setCurrentPage(0)
-        console.log("CANTIDAD SELECCIONADA:", event.target.value)
+        // console.log("CANTIDAD SELECCIONADA:", event.target.value)
         event.target.value === "Todos" ?
             setItemsPerPage(999) :
             setItemsPerPage(parseInt(event.target.value)) // EL VALOR DEL SELECT ES UN STRING
@@ -58,7 +59,7 @@ export default function PagedDogs() {
         return (
             currentItems.map(dog => {
                 return (
-                    <Link style={ { textDecoration: 'none' } } to={ "/dog/detail/" + dog.id } key={ `link${dog.id}${dog.nombre}` }>
+                    <Link style={ { textDecoration: 'none' } } to={ "/home/dog-detail/" + dog.id } key={ `link${dog.id}${dog.nombre}` }>
                         <DogCard
                             key={ `${dog.id}${dog.nombre}` }
                             nombre={ dog.nombre }
@@ -76,7 +77,7 @@ export default function PagedDogs() {
         return (
             <div className={ styles.paginatedControlsContainer }>
                 <button disabled={ currentPage === 0 ? true : false } onClick={ anteriorPagina }>Anterior</button>
-                <h3>{ `${state.length} dog breeds - Página ${currentPage + 1} de ${totalPagesToShow}` }</h3>
+                <h3>{ `${dogBreedsToShow.length}/${totalBreeds} dog breeds - Página ${currentPage + 1} de ${totalPagesToShow}` }</h3>
                 <button disabled={ currentPage + 1 === totalPagesToShow ? true : false } onClick={ siguientePagina }>Siguiente</button>
             </div>)
     }

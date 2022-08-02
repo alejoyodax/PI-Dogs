@@ -58,11 +58,11 @@ async function createDogBreed(dogToCreate) {
    (function validateDataOfNewDog() {
       const EXAMPLE_DOG = {
          "nombre": "Alejoyodax raza",
-         "altura_min": 34,
-         "altura_max": 78,
-         "peso_min": 24,
-         "peso_max": 34,
-         "años_de_vida": 16,
+         "altura_min": "34",
+         "altura_max": "78",
+         "peso_min": "24",
+         "peso_max": "34",
+         "años_de_vida": "16",
          "img_url": "akdjsf4ioiu"
       }
       for (let prop in EXAMPLE_DOG) {
@@ -76,12 +76,12 @@ async function createDogBreed(dogToCreate) {
    const dogFound = await Dog.findOne(
       {
          where: {
-            nombre: dogToCreate.nombre
+            nombre: dogToCreate.nombre.toLowerCase()
          }
       })
    if (dogFound) {
       // console.log("ID PERRO CREADO", dogFound.id)
-      throw customError(`Ya existe una raza con el nombre \'${dogToCreate.nombre}\' en la base de datos`)
+      throw customError(`Ya existe una raza con el nombre \'${dogToCreate.nombre.toLowerCase()}\' en la base de datos`)
    }
    const newDog = await Dog.create({
       ...dogToCreate,
@@ -144,7 +144,7 @@ async function searchDogsMatchedByName(stringToSearch) {
    // MAPEAR INFO NECESARIA BD
    matchedDogsFromBD.length && matchedDogsFromBD.forEach(dog => {
       dogsFoundBD.push({
-         id: dog.id,
+         id: "A" + dog.id,
          nombre: dog.nombre
       })
    })
@@ -164,16 +164,20 @@ async function getInfoBreedById(idBreed) {
    let dogFound
    // SI EL ID ES DE LA BD
    if (idBreed[0] === "A" || idBreed[0] === "a") {
-      // console.log("ID DE BASE DE DATOS")
-      const dogQuery = await Dog.findByPk(idBreed.slice(1))
+      console.log("ID DE BASE DE DATOS")
+      const dogQuery = await Dog.findByPk(idBreed.slice(1), {
+         include: Temper
+      })
       if (!dogQuery) throw itIsNotExistError
       dogFound = {
          ...dogQuery.dataValues,
-         id: dogQuery.id
+         id: dogQuery.id,
+         temperamentos: dogQuery.tempers.map(temp => temp.nombre)
       }
+      delete dogFound.tempers
 
    } else {// SI EL ID ES DE LA API
-      // console.log("ID DE API")
+      console.log("ID DE API")
       const dogsFromApi = (await axios.get("https://api.thedogapi.com/v1/breeds", {
          headers: {
             'x-api-key': process.env.API_KEY_DOGS

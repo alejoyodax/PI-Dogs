@@ -1,0 +1,70 @@
+
+.mainContainer{
+   /* border: 1px solid blue; */
+   position: relative;
+   height: 35px;
+
+   box-sizing: border-box;
+}
+
+.mainContainer > input{
+   border: 0px solid blue;
+   height: 100%;
+   width: 100%;
+   border-radius: 90px;
+   padding-left: 35px;
+   font-size: 15px;
+   box-sizing: border-box;
+}
+.mainContainer > img{
+   position: absolute;
+   top: 50%;
+   left: 8px;
+
+   transform: translateY(-50%);
+}
+
+/* CUADRO FLOTANTE */
+
+.dogsFoundContainer{
+   top: 120%;
+   left: 50%;
+   transform: translateX(-50%);
+
+   position: absolute;
+   background-color: white;
+
+   /* border: 1px solid blue; */
+   border-radius: 8px;
+   display: flex;
+   flex-direction: column;
+
+   padding: 7px 0;
+   padding-right: 0;
+   width: 310px;
+   height: auto;
+   max-height: 300px;
+
+   /* overflow: hidden; */
+   box-shadow: 0px 12px 16px 0px rgba(71, 71, 71, 0.3);
+}
+.dogRow{
+   /* border: 1px solid red; */
+   display: flex;
+   justify-content: flex-start;
+   padding: 2px 0px;
+   padding-left: 30px;
+}.dogRow:hover{
+   background-color: var(--color-white1);
+}
+
+.dogRow > span{
+   color: var(--color-gray2);
+   font-size: 18px;
+   list-style: none;
+   text-align: left;
+
+   margin-right: 10px;
+   justify-self: flex-end;
+}
+

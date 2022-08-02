@@ -6,6 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: rgb(123,226,245);
+    background: linear-gradient(318deg, rgba(123,226,245,1) 0%, rgba(123,226,245,1) 37%, rgba(99,158,185,1) 100%);
 }
 
 .boxWelcome{

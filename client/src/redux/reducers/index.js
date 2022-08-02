@@ -4,7 +4,7 @@ import orderDogBreeds from '../helpers/orderDogBreeds.js'
 
 import {
    GET_ALL_DOG_BREEDS,
-   NOT_SUCCESFUL_RESPONSE,
+   // NOT_SUCCESFUL_RESPONSE,
    GET_ALL_TEMPERAMENTS,
    FILTER_DOG_BREEDS,
    ORDER_DOG_BREEDS,

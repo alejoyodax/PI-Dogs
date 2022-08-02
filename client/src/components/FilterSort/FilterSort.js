@@ -2,7 +2,7 @@ import { useRef, } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import styles from "./FilterSort.module.css"
 // Componentes
-import ButtonSwitch from "../Elements/ButtonSwitch.js"
+// import ButtonSwitch from "../Elements/ButtonSwitch.js"
 
 //ACTIONS
 import { filterDogBreeds, orderDogBreeds } from "../../redux/actions/actions.js"
