@@ -1,29 +1,58 @@
 import { Link } from "react-router-dom"
 import styles from './Homepage.module.css'
-// import fondo from "../../img/dog.png"
+import fondo from "../../img/page_landing/bg.png"
+import dog_model from "../../img/page_landing/dog_model.png"
+import logoB from "../../img/page_landing/logoB.svg"
+
 import { useState } from "react"
 
 export default function Homepage() {
     console.log(1)
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(true)
 
 
-    function getEndLoad() {
+    function showPage() {
         console.log(2)
         setIsVisible(true)
     }
 
-    return (
-        <div style={ { visibility: isVisible ? "visible" : "hidden" } } className={ styles.homepageContainer }>
-            <div className={ styles.fondoContainer }>
-                <img onLoad={ () => getEndLoad() } src={ "https://images4.alphacoders.com/936/936378.jpg" } alt="countries.png"></img>
-            </div>
+    function BackGroundImages() {
+        return (
+            <div className={ styles.backGroundImages }>
+                <img className={ styles.bgBones }
+                    onLoad={ () => showPage() }
+                    src={ fondo }
+                    alt="countries.png">
+                </img>
 
-            <div className={ styles.boxWelcome }>
-                <h2 className="normalizar">Dogs</h2>
-                <br></br>
-                <Link to="/home">Vamos!</Link>
+                <img
+                    className={ styles.bgDogModel }
+                    alt="dog_model.png"
+                    src={ dog_model }
+                />
             </div>
+        )
+    }
+
+    function InfoContainer() {
+        return (
+            <div className={ styles.infoContainer }>
+                <img src={ logoB } className={ styles.logoSvg } alt="logo.svg" />
+                <h3>discover the canine variety through its breeds</h3>
+                <Link to="home">
+                    <button className={ styles.goButton }>lets go!</button>
+                </Link>
+
+            </div>
+        )
+    }
+
+
+    return (
+        <div style={ { visibility: isVisible ? "visible" : "hidden" } }
+            className={ styles.homepageContainer }>
+            <BackGroundImages />
+            <InfoContainer />
 
         </div>
 

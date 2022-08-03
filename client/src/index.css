@@ -5,6 +5,8 @@ body {
 
 code {
   font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Mochiy Pop One', sans-serif; */
+  /* font-family: 'Montserrat', sans-serif; */
 }
 
 :root{
@@ -27,7 +29,8 @@ code {
   --color-gray2: #636363;
   --color-gray3: #424242;
 
-
+  /* NEGROS */
+  --color-black1: #333333;
 
 
 
