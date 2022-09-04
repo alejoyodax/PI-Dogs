@@ -16,7 +16,8 @@ export default function PagedDogs() {
     const [currentPage, setCurrentPage] = useState(0)
     const [itemsPerPage, setItemsPerPage] = useState(8)
     const [currentItems, setCurrentItems] = useState([...state.slice(0, itemsPerPage)])
-    const [totalPages, setTotalPages] = useState((Math.floor(dogBreedsToShow.length / itemsPerPage)))
+    const [totalPages, setTotalPages] = useState(dogBreedsToShow.length > itemsPerPage && dogBreedsToShow.length < (itemsPerPage * 2) ? 2 : (Math.floor(dogBreedsToShow.length / itemsPerPage)))
+    // (Math.floor(dogBreedsToShow.length / itemsPerPage)) > 1.0 && (Math.floor(dogBreedsToShow.length / itemsPerPage))<2.0 ? 2: (Math.floor(dogBreedsToShow.length / itemsPerPage))
     // console.log("TOTAL PAGES:", totalPages)
 
     // CUANDO LOS DOGS A MOSTRAR DEL STORE E itemsPerPage CAMBIEN
@@ -25,7 +26,9 @@ export default function PagedDogs() {
         // console.log("dogBreedsToShow: ", dogBreedsToShow)
         setState([...dogBreedsToShow])
         setCurrentItems([...dogBreedsToShow.slice(0, itemsPerPage)])
-        setTotalPages(Math.floor(dogBreedsToShow.length / itemsPerPage))
+        setTotalPages(dogBreedsToShow.length > itemsPerPage && dogBreedsToShow.length < (itemsPerPage * 2) ?
+            2 :
+            (Math.floor(dogBreedsToShow.length / itemsPerPage)))
     }, [dogBreedsToShow, itemsPerPage]
     )
 

@@ -29,17 +29,12 @@ function App() {
     <div id='APP' className="App">
       <Routes>
         <Route path='/' element={ <Homepage /> } />
-
         <Route path='/home' element={ <Main /> } >
           <Route path='' element={ <Navigate to="dogs" /> } />
           <Route path='dogs' element={ <Dogs /> } />
           <Route path='dog-detail/:dogId' element={ <DogDetail /> } />
           <Route path='create-breed' element={ <DogCreate /> } />
-
         </Route>
-
-
-
 
         <Route path='*' element={ <NotFound /> } />
       </Routes>

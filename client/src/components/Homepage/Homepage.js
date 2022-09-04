@@ -10,7 +10,6 @@ export default function Homepage() {
     console.log(1)
     const [isVisible, setIsVisible] = useState(true)
 
-
     function showPage() {
         console.log(2)
         setIsVisible(true)

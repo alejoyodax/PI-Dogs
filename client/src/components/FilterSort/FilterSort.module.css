@@ -20,6 +20,7 @@
     font-size: 16px;
     height: 100%;
 
+    
     border: 0px;
     
     border-radius: 0px 5px 5px 0px;
@@ -66,6 +67,11 @@
 
     color: var(--gray-text);
     /* font-weight: bold; */
+
+    border: 1px solid var(--color-gray1);
+    border-top: 2px solid var(--color-third);
+    border-left: 0px;
+    border-right: 0px;
 }
 
 .boxControl > .labelContainer{

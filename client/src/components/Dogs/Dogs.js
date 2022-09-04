@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import styles from "./Dogs.module.css"
-// import fondo from "../../img/countries.png"
+import fondo from "../../img/page_landing/bg.png"
 
 // IMPORTAR COMPONENTES
 import PagedDogs from "../PagedDogs/PagedDogs"
@@ -30,7 +30,7 @@ export default function Countries() {
     return (
         <div className={ styles.container }>
             <div className={ styles.fondo }>
-                <img alt="fondo" src={ "fondo.png" }></img>
+                <img alt="fondo" src={ fondo }></img>
             </div>
             { isLoading ? IsLoading(isSuccesRequest) : <PagedDogs /> }
         </div>

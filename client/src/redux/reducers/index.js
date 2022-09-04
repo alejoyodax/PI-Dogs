@@ -12,7 +12,7 @@ import {
 
 // STORE Y SUS VARIABLES
 const initialState = {
-   dogBreeds: [],   // LOS POKEMONES QUE LLEGAN DE LA API
+   dogBreeds: [],   // 
    dogBreedsToShow: [],
    temperaments: [],
    isLoading: true,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.css'
-import logo from "../../img/logo_dogs.svg"
+import logo from "../../img/page_landing/logo.png"
 // import lupa from "../../img/lupita.png"
 
 import SearchDog from "../SearchDog/SearchDog.js"
@@ -37,10 +37,10 @@ export default function NavBar() {
                         <NavLink className={ getColorIfActive }
                             to="create-breed">Create breed</NavLink>
                     </li>
-                    <li className={ styles.liContainer }>
+                    {/* <li className={ styles.liContainer }>
                         <NavLink className={ getColorIfActive }
                             to="about">About</NavLink>
-                    </li>
+                    </li> */}
 
                 </ul>
             </nav>

@@ -21,7 +21,9 @@ function getUtilInfoFromDog(dog) {
       peso_max: Number.parseInt(peso[1]) || 0,
       años_de_vida: Number.parseInt(años[2]),
       img_url: dog.image.url,
-      temperamentos: dog.temperament && [...dog.temperament.split(", ")]
+      temperamentos: dog.temperament && [...dog.temperament.split(", ")],
+      bred_for: dog.bred_for,
+
    }
 }
 
@@ -48,6 +50,7 @@ function mapInfoDogDB(dog) {
       años_de_vida: dog.años_de_vida,
       img_url: dog.img_url,
       temperamentos: mapTempers(dog.tempers)
+
    }
 }
 

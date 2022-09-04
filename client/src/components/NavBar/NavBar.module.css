@@ -23,11 +23,15 @@
     border-radius: 0px 0px 0px 0px;
     /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
 
-    background: var(--color-white1);
-    
+    background: rgba( 235, 235, 235, 0.95 );
+    box-shadow: 0 3px 5px 0 rgba(43, 43, 43, 0.212);
     backdrop-filter: blur( 0px );
     -webkit-backdrop-filter: blur( 0px );
+    border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    
+
 }
 
 .link{

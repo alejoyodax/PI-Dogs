@@ -6,23 +6,27 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,
 } = process.env;
 
-const dataBaseUrl = process.env.NODE_ENV === "production" ?
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs` :
+const dataBaseUrl = process.env.NODE_ENV === "development" ?
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}` :
   `postgres://postgres:12345@localhost/dogs`
 
 const sequelize = new Sequelize(dataBaseUrl, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+
+  // dialectOptions: {
+  //   ssl: {
+  //     require: true,
+  //     rejectUnauthorized: false
+  //   }
+  // }
+
+
 });
 
-process.env.NODE_ENV === "production" ?
-  sequelize["dialectOptions"] = {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  } :
-  console.log("# El servidor no acepta conección SSl")
+// process.env.NODE_ENV === "production" ?
+
+//   console.log("# El servidor no acepta conección SSl")
 
 const basename = path.basename(__filename);
 

@@ -12,7 +12,6 @@ const dogRouter = Router() // CREAR UNA INSTANCIA DEL ROUTER DE EXPRESS
 
 
 dogRouter.get("/", async (req, res, next) => {
-   const { idRaza } = req.params //  ID DE INFORMACIÓN DE RAZA SOLICITADA
    try {
       const dogsFromFound = await getDogsFromApi()
       res.status(200).send([...dogsFromFound])
@@ -34,7 +33,8 @@ dogRouter.get("/search", async (req, res, next) => {
 })
 
 dogRouter.get("/:idRaza", async (req, res, next) => {
-   const { idRaza } = req.params //  ID DE INFORMACIÓN DE RAZA SOLICITADA
+
+   //  ID DE INFORMACIÓN DE RAZA SOLICITADA
    console.log("RAZA SOLICITADA", idRaza)
    try {
       const breedInfo = await getInfoBreedById(idRaza)
@@ -46,9 +46,6 @@ dogRouter.get("/:idRaza", async (req, res, next) => {
       next(error)
    }
 })
-
-
-
 
 dogRouter.post("/", async (req, res, next) => {
    const dogToCreate = req.body

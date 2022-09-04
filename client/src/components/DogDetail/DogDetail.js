@@ -21,7 +21,7 @@ export default function DogDetail() {
          .then((response) => {
             setDogInfo(response.data)
             setIsloading(false)
-            // console.log(response.data)
+            console.log(response.data)
          }).catch(() => {
             setError(true)
          })
@@ -32,6 +32,8 @@ export default function DogDetail() {
    function RenderCard() {
       return (
          <div className={ s.cardContainer }>
+            <h1>{ dogInfo.bred_for }</h1>
+
             <div className={ s.headerContainer }>
                <h1>{ dogInfo.nombre.toUpperCase() }</h1>
             </div>

@@ -23,8 +23,7 @@ export default function filterDogBreeds({ source, temp, dogBreeds }) {
    if (source === "All" && temp === "All") return dogBreeds
 
    let filteredDogs = dogBreeds.filter((dog) => {
-      if (filterBySource(source, dog) &&
-         filterByTemperament(temp, dog)) {
+      if (filterBySource(source, dog) && filterByTemperament(temp, dog)) {
          return true
       } else { return false }
    })
